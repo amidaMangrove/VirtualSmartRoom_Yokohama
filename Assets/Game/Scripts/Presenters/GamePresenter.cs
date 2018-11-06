@@ -7,6 +7,7 @@ public class GamePresenter : MonoBehaviour {
     [Header("Views")]
     [SerializeField] Lighting _lighting;
     [SerializeField] Weather _weather;
+    [SerializeField] Flag _flag;
     FirebaseRestAPI _dbReceiver = FirebaseRestAPI.Instance;
 
     void Start () {
@@ -21,6 +22,11 @@ public class GamePresenter : MonoBehaviour {
         _dbReceiver.AddObserbser("weather", (sender, data) =>
         {
             _weather.UpdateWeather(data.RawValue.ToString());
+        });
+
+        _dbReceiver.AddObserbser("flag", (sender, data) =>
+        {
+            _flag.UpdateFlag(data.RawValue.ToString());
         });
     }
 	

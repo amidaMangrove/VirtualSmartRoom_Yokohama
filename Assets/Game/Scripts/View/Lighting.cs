@@ -15,6 +15,7 @@ public class Lighting : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         _light.intensity = Mathf.Lerp(_light.intensity, intencity, Time.deltaTime);
 	}
 
