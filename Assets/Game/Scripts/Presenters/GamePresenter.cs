@@ -9,6 +9,7 @@ public class GamePresenter : MonoBehaviour {
     [SerializeField] Weather _weather;
     [SerializeField] Flag _flag;
     [SerializeField] Player _player;
+    [SerializeField] Bird _bird;
     FirebaseRestAPI _dbReceiver = FirebaseRestAPI.Instance;
 
     void Start () {
@@ -33,6 +34,11 @@ public class GamePresenter : MonoBehaviour {
         _dbReceiver.AddObserbser("reverse", (sender, data) =>
         {
             _player.UpdatePlayer(data.RawValue.ToString());
+        });
+
+        _dbReceiver.AddObserbser("bird", (sender, data) =>
+        {
+            _bird.UpdateBird(data.RawValue.ToString());
         });
     }
 	
